@@ -54,6 +54,8 @@ function showTemperature(response) {
   document.querySelector("#wind-speed").innerHTML = Math.round(
     response.data.wind.speed
   );
+
+  fahrenheitTemperature = response.data.temperature.current;
 }
 
 function submitCity(event) {
@@ -79,6 +81,15 @@ function changeCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
 
+function showCelsiusTemperature(event) {
+  event.preventDefault();
+  let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
+  document.querySelector("#today-temp").innerHTML =
+    Math.round(celsiusTemperature);
+}
+
+let fahrenheitTemperature = null;
+
 let now = new Date();
 let changeDate = document.querySelector(".day-details");
 changeDate.innerHTML = formatDate(now);
@@ -88,3 +99,6 @@ enterCity.addEventListener("submit", submitCity);
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", changeCurrentLocation);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", showCelsiusTemperature);

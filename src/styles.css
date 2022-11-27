@@ -53,7 +53,9 @@ h2 {
 }
 .weather-type {
   color: #fff;
+  text-transform: capitalize;
 }
+
 #today-details {
   padding-left: 60px;
 }

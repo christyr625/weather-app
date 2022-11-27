@@ -42,11 +42,10 @@ function formatDate(date) {
 }
 
 function showTemperature(response) {
-  console.log(response.data);
   document.querySelector("#new-city").innerHTML = response.data.city;
-  document.querySelector("#today-temp").innerHTML = `${Math.round(
+  document.querySelector("#today-temp").innerHTML = Math.round(
     response.data.temperature.current
-  )}°F`;
+  );
   document.querySelector("#weather-type").innerHTML =
     response.data.condition.description;
   document.querySelector("#humidity").innerHTML = Math.round(

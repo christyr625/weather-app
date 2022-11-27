@@ -54,7 +54,9 @@ function showTemperature(response) {
   document.querySelector("#wind-speed").innerHTML = Math.round(
     response.data.wind.speed
   );
-
+  document
+    .querySelector("#icon")
+    .setAttribute("src", response.data.condition.icon_url);
   fahrenheitTemperature = response.data.temperature.current;
 }
 

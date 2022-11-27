@@ -41,17 +41,20 @@ function formatDate(date) {
   return formattedDate;
 }
 
-let now = new Date();
-let changeDate = document.querySelector(".day-details");
-changeDate.innerHTML = formatDate(now);
-
 function showTemperature(response) {
+  console.log(response.data);
   document.querySelector("#today-temp").innerHTML = `${Math.round(
     response.data.main.temp
   )}°F`;
   document.querySelector("#weather-type").innerHTML =
     response.data.weather[0].main;
   document.querySelector("#new-city").innerHTML = response.data.name;
+  document.querySelector("#humidity").innerHTML = Math.round(
+    response.data.main.humidity
+  );
+  document.querySelector("#wind-speed").innerHTML = Math.round(
+    response.data.wind.speed
+  );
 }
 
 function submitCity(event) {
@@ -63,9 +66,6 @@ function submitCity(event) {
 
   axios.get(apiUrl).then(showTemperature);
 }
-
-let enterCity = document.querySelector("#searched-city");
-enterCity.addEventListener("submit", submitCity);
 
 function showCurrentLocation(position) {
   let latitude = position.coords.latitude;
@@ -79,6 +79,13 @@ function changeCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(showCurrentLocation);
 }
+
+let now = new Date();
+let changeDate = document.querySelector(".day-details");
+changeDate.innerHTML = formatDate(now);
+
+let enterCity = document.querySelector("#searched-city");
+enterCity.addEventListener("submit", submitCity);
 
 let currentLocationButton = document.querySelector("#current-location");
 currentLocationButton.addEventListener("click", changeCurrentLocation);

@@ -86,6 +86,17 @@ function showCelsiusTemperature(event) {
   let celsiusTemperature = ((fahrenheitTemperature - 32) * 5) / 9;
   document.querySelector("#today-temp").innerHTML =
     Math.round(celsiusTemperature);
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
+}
+
+function showFahrenheitTemperature(event) {
+  event.preventDefault();
+  document.querySelector("#today-temp").innerHTML = Math.round(
+    fahrenheitTemperature
+  );
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 let fahrenheitTemperature = null;
@@ -102,3 +113,6 @@ currentLocationButton.addEventListener("click", changeCurrentLocation);
 
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", showCelsiusTemperature);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheitTemperature);

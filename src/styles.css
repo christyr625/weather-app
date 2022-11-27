@@ -51,6 +51,16 @@ h2 {
   font-size: 25px;
   margin-top: 15px;
 }
+.units {
+  font-size: 18px;
+}
+.units .active {
+  color: #fff;
+  cursor: default;
+}
+.units .active:hover {
+  text-decoration: none;
+}
 .weather-type {
   color: #fff;
   text-transform: capitalize;

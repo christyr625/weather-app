@@ -12,9 +12,12 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Silkscreen&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&family=Silkscreen&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="src/styles.css" />
     <script
       src="https://kit.fontawesome.com/743990b969.js"
@@ -24,99 +27,79 @@
   <body>
     <div class="container">
       <div class="weather-app">
-      <div class="row">
-        <div class="col-6">
-          <div class="card">
-            <div class="card-body">
-              <form id="searched-city">
-                <input type="search" placeholder="Type city here..." id="changed-city" autocomplete = off autofocus = on />
-                <input type="submit" value="Search" class="btn btn-success" />
-                <input type="submit" value="Current" class="btn btn-success current-location" id="current-location"/>
-              </form>
-            </div>
-          </div>
-          <div class="row today">
-            <div class="col-4" id="today">
-              <h1 id="new-city"></h1>
-              <br />
-              
-                <img src="#" alt="" id="icon">              
-              
-              <br />
-              <h2><span id="today-temp"></span> <span class="units"><a href="#" class="active" id="fahrenheit-link">°F</a> | <a href="#" id="celsius-link">°C</a></span>
-              </h2>
-              <h4 class="weather-type" id="weather-type"></h4>
-            </div>
-            <div class="col-8" id="today-details">
-              <h3 class="day-details"></h3>
-              <br />
-              <ul class="list-today">
-                <li>Humidity: <span id="humidity"></span>%</li>
-                <li>Windspeed: <span id="wind-speed"></span>mph</li>
-              </ul>
-            </div>
-          </div>
-        </div>
         <div class="row">
           <div class="col-6">
-            <div class="card next-five-days" style="width: 25rem">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                  <div class="fa-3x">
-                    <i
-                      class="fa-solid fa-cloud fa-beat-fade nextdays-cloud"
-                      style="
-                        --fa-beat-fade-opacity: 0.67;
-                        --fa-beat-fade-scale: 1.075;
-                      "
-                    ></i>
-                  </div>
-                  <h5>Wednesday</h5>
-                  <p>H: 73°F/L: 50°F</p>
-                </li>
-                <li class="list-group-item">
-                  <div class="fa-3x">
-                    <i class="fa-solid fa-cloud-rain fa-flip nextdays-rain" style="--fa-animation-duration: 3s;" ></i></i>
-                  </div>
-                  <h5>Thursday</h5>
-                  <p>H: 69°F/L: 51°F</p>
-                </li>
-                <li class="list-group-item"> <div class="fa-3x">
-                    <i class="fa-solid fa-cloud-rain fa-flip nextdays-rain" style="--fa-animation-duration: 3s;" ></i></i>
-                  </div>
-                  <h5>Friday</h5>
-                  <p>H: 53°F/L: 44°F</p>
-                </li>
-                <li class="list-group-item">
-                  <div class="fa-3x">
-                    <i
-                      class="fa-regular fa-sun fa-spin nextdays-sun"
-                      style="--fa-animation-duration: 15s"
-                    ></i>
-                  </div>
-                  <h5>Saturday</h5>
-                  <p>H: 57°F/L: 40°F</p>
-                </li>
-                <li class="list-group-item"><div class="fa-3x">
-                    <i
-                      class="fa-regular fa-sun fa-spin nextdays-sun"
-                      style="--fa-animation-duration: 15s"
-                    ></i>
-                  </div>
-                  <h5>Sunday</h5>
-                  <p>H: 63°F/L: 41°F</p></li>
-              </ul>
-              
+            <div class="card">
+              <div class="card-body">
+                <form id="searched-city">
+                  <input
+                    type="search"
+                    placeholder="Type city here..."
+                    id="changed-city"
+                    autocomplete="off"
+                    autofocus="on"
+                  />
+                  <input type="submit" value="Search" class="btn btn-success" />
+                  <input
+                    type="submit"
+                    value="Current"
+                    class="btn btn-success current-location"
+                    id="current-location"
+                  />
+                </form>
+              </div>
+            </div>
+            <div class="row today">
+              <div class="col-4" id="today">
+                <h1 id="new-city"></h1>
+                <br />
+
+                <img src="#" alt="" id="icon" />
+
+                <br />
+                <h2>
+                  <span id="today-temp"></span>
+                  <span class="units"
+                    ><a href="#" class="active" id="fahrenheit-link">°F</a> |
+                    <a href="#" id="celsius-link">°C</a></span
+                  >
+                </h2>
+                <h4 class="weather-type" id="weather-type"></h4>
+              </div>
+              <div class="col-8" id="today-details">
+                <h3 class="day-details"></h3>
+                <br />
+                <ul class="list-today">
+                  <li>Humidity: <span id="humidity"></span>%</li>
+                  <li>Windspeed: <span id="wind-speed"></span>mph</li>
+                </ul>
+              </div>
             </div>
           </div>
-          
+          <div class="row">
+            <div class="col-6">
+              <div class="card next-five-days" style="width: 25rem">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">
+                    <div id="forecast"></div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
-       
-      </div>
-      <p class="code-by"><a href="https://github.com/christyr625/weather-app" target="_blank" rel="noopener noreferrer">Open-source code</a> by Christy Rutherford</p> 
+        <p class="code-by">
+          <a
+            href="https://github.com/christyr625/weather-app"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Open-source code</a
+          >
+          by Christy Rutherford
+        </p>
       </div>
     </div>
-    
+
     <script src="src/index.js"></script>
   </body>
 </html>

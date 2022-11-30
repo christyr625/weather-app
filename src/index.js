@@ -41,6 +41,35 @@ function formatDate(date) {
   return formattedDate;
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+
+  let forecastHTML = "";
+  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<span class="forecast-icon">
+                    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+                      alt="broken clouds" width="75"/>
+                  </span>
+                    <h5 id="forecast-day">${day}</h5>
+                    <p class="forecast-high-low">
+                    H: <span id="forecast-weather-max">73</span>
+                    °F / L: 
+                    <span id="forecast-weather-min">50</span>°F
+                    </p>`;
+  });
+  forecastElement.innerHTML = forecastHTML;
+}
+
+function getForecast(coordinates) {
+  let apiKey = "8b407b8c3ba194fotf93ec175a751a7b";
+
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`;
+  console.log(apiUrl);
+}
+
 function showTemperature(response) {
   document.querySelector("#new-city").innerHTML = response.data.city;
   document.querySelector("#today-temp").innerHTML = Math.round(
@@ -58,6 +87,8 @@ function showTemperature(response) {
     .querySelector("#icon")
     .setAttribute("src", response.data.condition.icon_url);
   fahrenheitTemperature = response.data.temperature.current;
+
+  getForecast(response.data.coordinates);
 }
 
 function submitCity(event) {
@@ -118,3 +149,5 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+displayForecast();

@@ -87,30 +87,17 @@ h2 {
   border: none;
   padding: 2px 15px 2px 50px;
 }
-.fa-3x {
-  display: inline;
-}
-h5 {
+
+#forecast-day {
   display: inline;
   font-size: 30px;
 }
-p {
-  margin-left: 55px;
+.forecast-high-low {
+  margin-left: 85px;
   font-size: 18px;
   color: #699c4e;
 }
-.nextdays-cloud {
-  font-size: 30px;
-  color: rgb(158, 158, 158);
-}
-.nextdays-sun {
-  font-size: 40px;
-  color: yellow;
-}
-.nextdays-rain {
-  font-size: 40px;
-  color: #1d3198;
-}
+
 .code-by {
   text-align: right;
   color: white;

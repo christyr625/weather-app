@@ -41,7 +41,8 @@ function formatDate(date) {
   return formattedDate;
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
@@ -68,6 +69,7 @@ function getForecast(coordinates) {
 
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`;
   console.log(apiUrl);
+  axios.get(apiUrl).then(displayForecast);
 }
 
 function showTemperature(response) {
@@ -150,4 +152,4 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
 
-displayForecast();
+search("Chicago");

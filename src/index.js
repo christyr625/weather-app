@@ -41,26 +41,51 @@ function formatDate(date) {
   return formattedDate;
 }
 
+function formatForecastDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
 
   let forecastHTML = "";
-  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<span class="forecast-icon">
-                    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/broken-clouds-day.png"
+
+  forecast.forEach(function (forecastDay, index) {
+    if (index > 0 && index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `<span class="forecast-icon">
+                    <img src="${forecastDay.condition.icon_url}"
                       alt="broken clouds" width="75"/>
                   </span>
-                    <h5 id="forecast-day">${day}</h5>
+                    <h5 id="forecast-day">${formatForecastDay(
+                      forecastDay.time
+                    )}</h5>
                     <p class="forecast-high-low">
-                    H: <span id="forecast-weather-max">73</span>
+                    H: <span id="forecast-weather-max">${Math.round(
+                      forecastDay.temperature.maximum
+                    )}</span>
                     °F / L: 
-                    <span id="forecast-weather-min">50</span>°F
+                    <span id="forecast-weather-min">${Math.round(
+                      forecastDay.temperature.minimum
+                    )}</span>°F
                     </p>`;
+    }
   });
+
   forecastElement.innerHTML = forecastHTML;
 }
 
@@ -68,7 +93,7 @@ function getForecast(coordinates) {
   let apiKey = "8b407b8c3ba194fotf93ec175a751a7b";
 
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&key=${apiKey}&units=imperial`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -151,5 +176,3 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
-
-search("Chicago");

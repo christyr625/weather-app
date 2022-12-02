@@ -159,6 +159,13 @@ function showFahrenheitTemperature(event) {
   fahrenheitLink.classList.add("active");
 }
 
+function search(city) {
+  let apiKey = "8b407b8c3ba194fotf93ec175a751a7b";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=imperial`;
+
+  axios.get(apiUrl).then(showTemperature);
+}
+
 let fahrenheitTemperature = null;
 
 let now = new Date();
@@ -176,3 +183,5 @@ celsiusLink.addEventListener("click", showCelsiusTemperature);
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheitTemperature);
+
+search("Chicago");
